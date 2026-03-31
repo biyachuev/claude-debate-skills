@@ -1,0 +1,6 @@
+.DS_Store
+.claude/settings.local.json
+.claude/debate-logs/
+_internal/
+.obsidian/
+.vscode/
