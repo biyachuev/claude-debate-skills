@@ -11,13 +11,14 @@ Use this prompt when you have multiple plausible paths and want a harder compari
 3. Затем Codex должен отдельно pressure-test'ить top-1 опцию и runner-up.
 4. Затем пересобери ranking.
 5. В конце дай финальную рекомендацию и объясни, почему не выбраны альтернативы.
-6. Если я передал `Log File:` или `Save As:`, используй это имя или путь для сохранения.
-7. Если путь не указан, сохрани в `.claude/debate-logs/`.
-8. После завершения явно напиши `Log saved: <path>`.
-9. Если Codex недоступен, скажи это прямо и не имитируй его ответы.
+6. Если я передал `No Log`, `Log: none` или `Log File: none`, не сохраняй ничего в файл, не показывай Log Path и не пиши строку `Log saved`.
+7. Иначе, если я передал `Log File:` или `Save As:`, используй это имя или путь для сохранения.
+8. Если путь не указан, сохрани в `.claude/debate-logs/`.
+9. После завершения явно напиши `Log saved: <path>`.
+10. Если Codex недоступен, скажи это прямо и не имитируй его ответы.
 
 Формат ответа:
-- Log Path
+- Log Path (пропусти если No Log)
 - Decision Brief
 - Option Set
 - Codex Challenge

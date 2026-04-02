@@ -15,9 +15,8 @@ Treat `$ARGUMENTS` as the full decision brief.
 
 1. If Codex is not available in the current Claude Code session, say that explicitly and stop. Do not fabricate Codex output.
 2. Show the option framing, challenge, and ranking visibly in the chat.
-3. Save the full visible output to a resolved log path.
-4. Show the exact log path at the start.
-5. Confirm save success or failure at the end.
+3. Unless the user opted out of logging, save the full visible output to a resolved log path.
+4. If logging is enabled, show the exact log path at the start and confirm save success or failure at the end.
 
 ## Log file resolution
 
@@ -25,6 +24,7 @@ Accept either `Log File:` or `Save As:` in the user brief.
 
 Resolve the log path with these rules:
 
+0. If the user passes `No Log`, `Log: none`, or `Log File: none`, skip all file writing. Do not resolve a path, do not create directories, do not save anything.
 1. A bare filename such as `go-to-market-options` becomes `.claude/debate-logs/go-to-market-options.md`.
 2. A filename with `.md` stays as given under `.claude/debate-logs/`.
 3. A relative path with folders such as `notes/decisions/go-to-market-options.md` is used relative to the project root.
@@ -38,7 +38,7 @@ Resolve the log path with these rules:
    - goal
    - constraints
    - selected finalizer
-   - resolved log path
+   - resolved log path (skip if logging is disabled)
 2. Claude frames `2-4 distinct options`.
 3. Codex challenges each option:
    - strongest upside
@@ -54,7 +54,7 @@ Resolve the log path with these rules:
 
 ## Required chat format
 
-- `Log Path`
+- `Log Path` (omit if logging is disabled)
 - `Decision Brief`
 - `Option Set`
 - `Codex Challenge`
@@ -65,6 +65,8 @@ Resolve the log path with these rules:
 - `Key Assumptions`
 
 ## Logging requirements
+
+If the user opted out of logging, skip this entire section — do not write any files and do not print log status lines.
 
 Write the same visible output to the resolved log path.
 

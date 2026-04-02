@@ -15,9 +15,8 @@ Treat `$ARGUMENTS` as the debate brief.
 
 1. If Codex is not available in the current Claude Code session, say that explicitly and stop. Do not fabricate Codex output.
 2. Show both Claude and Codex contributions in the chat. Do not collapse Codex into a one-line paraphrase.
-3. Save the full debate transcript to a resolved log path.
-4. At the start of the answer, show the exact log path you will write to.
-5. At the end of the answer, confirm whether the file was written successfully.
+3. Unless the user opted out of logging, save the full debate transcript to a resolved log path.
+4. If logging is enabled, show the exact log path at the start and confirm save success or failure at the end.
 
 ## Log file resolution
 
@@ -25,6 +24,7 @@ Accept either `Log File:` or `Save As:` in the user brief.
 
 Resolve the log path with these rules:
 
+0. If the user passes `No Log`, `Log: none`, or `Log File: none`, skip all file writing. Do not resolve a path, do not create directories, do not save anything.
 1. If the user provides only a filename such as `smb-vs-enterprise`, save to `.claude/debate-logs/smb-vs-enterprise.md`.
 2. If the user provides a filename with `.md`, keep it and save to `.claude/debate-logs/<name>.md`.
 3. If the user provides a relative path with folders such as `notes/decisions/smb-vs-enterprise.md`, use it relative to the project root.
@@ -42,7 +42,7 @@ Run the debate in this exact order:
    - goal of the debate
    - explicit constraints
    - requested finalizer (`Claude` or `Codex`)
-   - resolved log path
+   - resolved log path (skip if logging is disabled)
 2. Produce `Claude v1` as an independent position.
 3. Ask Codex for `Codex v1` as an independent position. Do not ask Codex to merely agree with Claude.
 4. Produce `Claude critique of Codex v1`:
@@ -63,7 +63,7 @@ Run the debate in this exact order:
 
 Use these section headings in the visible answer:
 
-- `Log Path`
+- `Log Path` (omit if logging is disabled)
 - `Topic`
 - `Claude v1`
 - `Codex v1`
@@ -88,6 +88,8 @@ After the debate is complete, add a `Protocol Summary` section that contains:
 Write this section in the same language as the topic. If the topic is mixed-language or unclear, use the primary language of the user's brief.
 
 ## Logging requirements
+
+If the user opted out of logging, skip this entire section — do not write any files and do not print log status lines.
 
 Write the same visible debate to the resolved log path.
 

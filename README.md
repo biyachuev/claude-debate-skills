@@ -62,6 +62,8 @@ Rules:
 - `Log File: notes/decisions/my-note.md` saves to that relative path in the current project
 - if omitted, the skill falls back to a session-based filename in `.claude/debate-logs/`
 
+To skip logging entirely, pass `No Log`, `Log: none`, or `Log File: none`. The skill will run the full debate in chat without writing any files.
+
 When skills are installed globally, the log file is still resolved relative to the currently active project, not this repository.
 
 ## Language behavior

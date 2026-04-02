@@ -23,9 +23,8 @@ If the user overrides these roles, follow the override.
 
 1. If Codex is required by the selected roles and is not available, say that explicitly and stop. Do not fabricate Codex output.
 2. Show both voices in the chat. Do not summarize one of them away.
-3. Save the full visible output to a resolved log path.
-4. Show the exact log path at the start.
-5. Confirm save success or failure at the end.
+3. Unless the user opted out of logging, save the full visible output to a resolved log path.
+4. If logging is enabled, show the exact log path at the start and confirm save success or failure at the end.
 
 ## Log file resolution
 
@@ -33,6 +32,7 @@ Accept either `Log File:` or `Save As:` in the user brief.
 
 Resolve the log path with these rules:
 
+0. If the user passes `No Log`, `Log: none`, or `Log File: none`, skip all file writing. Do not resolve a path, do not create directories, do not save anything.
 1. A bare filename such as `pricing-ideas` becomes `.claude/debate-logs/pricing-ideas.md`.
 2. A filename that already ends with `.md` stays as given under `.claude/debate-logs/`.
 3. A relative path with folders such as `notes/brainstorms/pricing-ideas.md` is used relative to the project root.
@@ -48,7 +48,7 @@ Resolve the log path with these rules:
    - creator
    - critic
    - finalizer
-   - resolved log path
+   - resolved log path (skip if logging is disabled)
 2. The creator produces `3-5 options` or angles.
 3. The critic reviews each option:
    - strongest value
@@ -64,7 +64,7 @@ Resolve the log path with these rules:
 
 ## Required chat format
 
-- `Log Path`
+- `Log Path` (omit if logging is disabled)
 - `Brief`
 - `Creator v1`
 - `Critic Review`
@@ -74,6 +74,8 @@ Resolve the log path with these rules:
 - `Next Moves`
 
 ## Logging requirements
+
+If the user opted out of logging, skip this entire section — do not write any files and do not print log status lines.
 
 Write the same visible output to the resolved log path.
 
