@@ -81,11 +81,11 @@ Use these section headings in the visible answer:
 
 After the debate is complete, add a `Protocol Summary` section that contains:
 
-1. A line stating how many stages were completed (e.g. "7 этапов выполнены полностью:").
+1. A line stating how many stages were completed.
 2. A numbered list with a one-line summary of each stage — what was said, what was challenged, what changed.
-3. A closing paragraph "Ключевое расхождение, которое протокол выявил:" — describe the most important disagreement the debate surfaced and how mutual critique resolved it.
+3. A closing paragraph on the most important disagreement the debate surfaced and how mutual critique resolved it.
 
-Write this section in Russian regardless of the debate language.
+Write this section in the same language as the topic. If the topic is mixed-language or unclear, use the primary language of the user's brief.
 
 ## Logging requirements
 

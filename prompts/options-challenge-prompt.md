@@ -8,18 +8,20 @@ Use this prompt when you have multiple plausible paths and want a harder compari
 Обязательные требования:
 1. Сначала сформулируй 2-4 действительно разных опции.
 2. Затем Codex должен атаковать каждую опцию по trade-offs и execution risk.
-3. Затем пересобери ranking.
-4. В конце дай финальную рекомендацию и объясни, почему не выбраны альтернативы.
-5. Если я передал `Log File:` или `Save As:`, используй это имя или путь для сохранения.
-6. Если путь не указан, сохрани в `.claude/debate-logs/`.
-7. После завершения явно напиши `Log saved: <path>`.
-8. Если Codex недоступен, скажи это прямо и не имитируй его ответы.
+3. Затем Codex должен отдельно pressure-test'ить top-1 опцию и runner-up.
+4. Затем пересобери ranking.
+5. В конце дай финальную рекомендацию и объясни, почему не выбраны альтернативы.
+6. Если я передал `Log File:` или `Save As:`, используй это имя или путь для сохранения.
+7. Если путь не указан, сохрани в `.claude/debate-logs/`.
+8. После завершения явно напиши `Log saved: <path>`.
+9. Если Codex недоступен, скажи это прямо и не имитируй его ответы.
 
 Формат ответа:
 - Log Path
 - Decision Brief
 - Option Set
 - Codex Challenge
+- Top Options Stress Test
 - Revised Ranking
 - Final Recommendation
 - Why Not The Alternatives

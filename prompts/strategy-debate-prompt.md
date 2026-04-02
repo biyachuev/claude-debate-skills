@@ -18,6 +18,7 @@ Use this prompt in Claude Extension when you want Claude to orchestrate a visibl
    - оставшиеся разногласия
    - рекомендация
    - confidence
+   - protocol summary
 3. Сохрани весь протокол в файл внутри проекта и в начале ответа покажи точный путь к файлу.
 4. Если я передал `Log File:` или `Save As:`, используй это имя или путь для сохранения.
 5. Если я не передал путь, сохрани по умолчанию в `.claude/debate-logs/`.
@@ -37,6 +38,7 @@ Use this prompt in Claude Extension when you want Claude to orchestrate a visibl
 - Unresolved Disagreements
 - Recommendation
 - Confidence
+- Protocol Summary
 
 Параметры обсуждения:
 - Finalizer: Claude
@@ -44,6 +46,8 @@ Use this prompt in Claude Extension when you want Claude to orchestrate a visibl
 - Topic: <вставь тему>
 - Goal: <какое решение или вывод нужен>
 - Constraints: <ограничения, контекст, вводные>
+
+`Protocol Summary` пиши на том же языке, на котором сформулирован `Topic`. Если тема сформулирована на двух языках или язык неоднозначен, используй основной язык брифа.
 ```
 
 ## Suggested usage

@@ -58,6 +58,7 @@ Resolve the log path with these rules:
 - `Decision Brief`
 - `Option Set`
 - `Codex Challenge`
+- `Top Options Stress Test`
 - `Revised Ranking`
 - `Final Recommendation`
 - `Why Not The Alternatives`

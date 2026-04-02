@@ -16,6 +16,21 @@ The skill files live in:
 - [`.claude/skills/creator-critic/SKILL.md`](.claude/skills/creator-critic/SKILL.md)
 - [`.claude/skills/options-challenge/SKILL.md`](.claude/skills/options-challenge/SKILL.md)
 
+## Codex requirement
+
+These skills are designed around a Claude + Codex two-voice structure. Codex is the second AI agent available in Claude Code when the [Codex plugin](https://github.com/openai/codex) is installed and active in the session. Most skills require Codex; `creator-critic` has a solo fallback.
+
+**How to check availability:** just run any skill. Claude will immediately say
+"Codex is not available in this session" and stop rather than fabricate its output.
+
+**If Codex is unavailable:**
+
+| Skill | Solo fallback |
+|---|---|
+| `creator-critic` | Pass `Creator: Claude. Critic: Claude.` — Claude runs both roles |
+| `strategy-debate` | No built-in solo mode — two-voice by design |
+| `options-challenge` | No built-in solo mode — Codex challenge is structural |
+
 ## How to use in this project
 
 Open Claude Code or Claude Extension in this repository and run:
@@ -26,6 +41,10 @@ Open Claude Code or Claude Extension in this repository and run:
 
 ```text
 /creator-critic Log File: pricing-ideas. Brief: Generate and pressure-test pricing ideas for an AI debate copilot. Constraints: simple plans, low trust, early-stage product.
+```
+
+```text
+/creator-critic Creator: Claude. Critic: Claude. Finalizer: Claude. Log File: pricing-ideas-solo. Brief: Generate and pressure-test pricing ideas for an AI debate copilot. Constraints: simple plans, low trust, early-stage product.
 ```
 
 ```text
@@ -44,6 +63,11 @@ Rules:
 - if omitted, the skill falls back to a session-based filename in `.claude/debate-logs/`
 
 When skills are installed globally, the log file is still resolved relative to the currently active project, not this repository.
+
+## Language behavior
+
+- Skills follow the language of the user brief unless the prompt explicitly asks for another output language.
+- In `strategy-debate`, `Protocol Summary` follows the language of `Topic`. If the topic is mixed-language, the skill uses the main language of the brief.
 
 ## Use across any project
 
@@ -73,13 +97,6 @@ ln -s "/absolute/path/to/repo/.claude/skills/strategy-debate" /path/to/project/.
 
 This is useful if you want different projects to expose different skills.
 
-## Suggested repository flow
-
-1. Initialize this folder as a Git repository.
-2. Commit the skills, prompt templates, and README.
-3. Push to GitHub.
-4. Reuse the skills globally through symlinks, or copy them selectively into project repositories.
-
 ## Prompt templates
 
 Paste-ready prompt versions live in:
@@ -87,3 +104,7 @@ Paste-ready prompt versions live in:
 - [`prompts/strategy-debate-prompt.md`](prompts/strategy-debate-prompt.md)
 - [`prompts/creator-critic-prompt.md`](prompts/creator-critic-prompt.md)
 - [`prompts/options-challenge-prompt.md`](prompts/options-challenge-prompt.md)
+
+## License
+
+[MIT](LICENSE)

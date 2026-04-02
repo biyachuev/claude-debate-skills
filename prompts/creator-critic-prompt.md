@@ -3,10 +3,10 @@
 Use this prompt when you want one voice to generate options and the other to pressure-test them before a final recommendation.
 
 ```text
-Запусти протокол Creator-Critic между Claude и Codex по брифу ниже.
+Запусти протокол Creator-Critic по брифу ниже, используя выбранные роли Creator / Critic / Finalizer.
 
 Обязательные требования:
-1. Покажи обе роли в ответе, не скрывай вклад Codex.
+1. Покажи обе роли в ответе. Если роль Critic отдана Codex, не своди его вклад к краткому пересказу. Если обе роли выполняет Claude, покажи Creator и Critic как явно разделённые голоса.
 2. Creator должен предложить 3-5 разных вариантов.
 3. Critic должен разобрать каждый вариант:
    - strongest value
@@ -19,6 +19,7 @@ Use this prompt when you want one voice to generate options and the other to pre
 7. Если путь не указан, сохрани в `.claude/debate-logs/`.
 8. После завершения явно напиши `Log saved: <path>`.
 9. Если Codex недоступен, скажи это прямо и не имитируй его ответы.
+10. Если обе выбранные роли выполняет Claude, можно провести протокол без Codex.
 
 Формат ответа:
 - Log Path
@@ -43,4 +44,10 @@ Use this prompt when you want one voice to generate options and the other to pre
 
 ```text
 /creator-critic Log File: pricing-ideas. Brief: Generate and pressure-test pricing ideas for an AI debate copilot. Constraints: simple plans, low trust, early-stage product.
+```
+
+Solo fallback without Codex:
+
+```text
+/creator-critic Creator: Claude. Critic: Claude. Finalizer: Claude. Log File: pricing-ideas-solo. Brief: Generate and pressure-test pricing ideas for an AI debate copilot. Constraints: simple plans, low trust, early-stage product.
 ```
