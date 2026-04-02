@@ -1,4 +1,4 @@
-# Claude Strategy Skills
+# Claude Debate Skills
 
 Reusable Claude Code skills for strategy discussions, idea generation, critique, and decision pressure-testing.
 
