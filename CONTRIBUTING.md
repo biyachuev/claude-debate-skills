@@ -4,7 +4,7 @@ Thanks for your interest in contributing to Claude Debate Skills!
 
 ## Adding a new skill
 
-1. Create a new directory under `.claude/skills/<your-skill-name>/`.
+1. Create a new directory under `skills/<your-skill-name>/`.
 2. Add a `SKILL.md` file with YAML frontmatter (`name`, `description`, `argument-hint`, `disable-model-invocation: true`).
 3. Follow the existing protocol structure: independent positions, cross-critique, revision, final synthesis.
 4. Include log file resolution rules (see any existing skill for the pattern).

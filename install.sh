@@ -3,7 +3,7 @@
 set -euo pipefail
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-skills_root="$repo_root/.claude/skills"
+skills_root="$repo_root/skills"
 target_root="${HOME}/.claude/skills"
 
 skills=(

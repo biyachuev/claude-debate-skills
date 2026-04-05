@@ -11,9 +11,10 @@ required_files=(
   "CONTRIBUTING.md"
   "install.sh"
   "uninstall.sh"
-  ".claude/skills/strategy-debate/SKILL.md"
-  ".claude/skills/creator-critic/SKILL.md"
-  ".claude/skills/options-challenge/SKILL.md"
+  ".claude-plugin/plugin.json"
+  "skills/strategy-debate/SKILL.md"
+  "skills/creator-critic/SKILL.md"
+  "skills/options-challenge/SKILL.md"
   "prompts/en/strategy-debate-prompt.md"
   "prompts/en/creator-critic-prompt.md"
   "prompts/en/options-challenge-prompt.md"
@@ -36,7 +37,7 @@ skills=(
 )
 
 for skill in "${skills[@]}"; do
-  skill_file=".claude/skills/${skill}/SKILL.md"
+  skill_file="skills/${skill}/SKILL.md"
 
   if ! grep -q "^name: ${skill}$" "$skill_file"; then
     echo "Skill metadata mismatch in $skill_file: expected name ${skill}" >&2

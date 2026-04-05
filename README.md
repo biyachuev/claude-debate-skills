@@ -17,20 +17,14 @@ npm install -g @openai/codex && codex login
 # 2. Install Codex plugin for Claude Code (from within Claude Code)
 /install-plugin codex
 
-# 3. Clone this repository and install the skills
-git clone https://github.com/biyachuev/claude-debate-skills.git
-cd claude-debate-skills
-./install.sh
+# 3. Install debate skills as a plugin
+claude plugin install --source https://github.com/biyachuev/claude-debate-skills.git
 
 # 4. Open any project in Claude Code and run:
 /strategy-debate Topic: Should we go after SMB or enterprise first? Constraints: team of 6, need fast feedback loops.
 ```
 
-To remove the global symlinks later, run:
-
-```bash
-./uninstall.sh
-```
+Alternative: clone the repository and use `./install.sh` for symlink-based installation (see [Installation](#installation) below).
 
 ## Requirements
 
@@ -48,9 +42,9 @@ To remove the global symlinks later, run:
 
 Skill files:
 
-- [`.claude/skills/strategy-debate/SKILL.md`](.claude/skills/strategy-debate/SKILL.md)
-- [`.claude/skills/creator-critic/SKILL.md`](.claude/skills/creator-critic/SKILL.md)
-- [`.claude/skills/options-challenge/SKILL.md`](.claude/skills/options-challenge/SKILL.md)
+- [`skills/strategy-debate/SKILL.md`](skills/strategy-debate/SKILL.md)
+- [`skills/creator-critic/SKILL.md`](skills/creator-critic/SKILL.md)
+- [`skills/options-challenge/SKILL.md`](skills/options-challenge/SKILL.md)
 
 ## When To Use Which Skill
 
@@ -113,11 +107,23 @@ When skills are installed globally, the log file is resolved relative to the cur
 
 ## Installation
 
-### Option 1: global install script (recommended)
+### Option 1: Claude Code plugin (recommended)
+
+Install directly as a Claude Code plugin:
+
+```bash
+claude plugin install --source https://github.com/biyachuev/claude-debate-skills.git
+```
+
+Or add to a marketplace and install by name. See [Claude Code plugin docs](https://docs.anthropic.com/en/docs/claude-code/plugins) for details.
+
+### Option 2: global install script
 
 Keep this repository anywhere on disk and run:
 
 ```bash
+git clone https://github.com/biyachuev/claude-debate-skills.git
+cd claude-debate-skills
 ./install.sh
 ```
 
@@ -129,24 +135,24 @@ To remove them later:
 ./uninstall.sh
 ```
 
-### Option 2: manual global symlinks
+### Option 3: manual global symlinks
 
 ```bash
 mkdir -p ~/.claude/skills
-ln -s "/absolute/path/to/repo/.claude/skills/strategy-debate" ~/.claude/skills/strategy-debate
-ln -s "/absolute/path/to/repo/.claude/skills/creator-critic" ~/.claude/skills/creator-critic
-ln -s "/absolute/path/to/repo/.claude/skills/options-challenge" ~/.claude/skills/options-challenge
+ln -s "/absolute/path/to/repo/skills/strategy-debate" ~/.claude/skills/strategy-debate
+ln -s "/absolute/path/to/repo/skills/creator-critic" ~/.claude/skills/creator-critic
+ln -s "/absolute/path/to/repo/skills/options-challenge" ~/.claude/skills/options-challenge
 ```
 
 After that, the slash commands are available in any project opened in Claude Code.
 
-### Option 3: project-local skills
+### Option 4: project-local skills
 
 Copy or symlink the skill directories into the target project's `.claude/skills/` folder.
 
 ```bash
 mkdir -p /path/to/project/.claude/skills
-ln -s "/absolute/path/to/repo/.claude/skills/strategy-debate" /path/to/project/.claude/skills/strategy-debate
+ln -s "/absolute/path/to/repo/skills/strategy-debate" /path/to/project/.claude/skills/strategy-debate
 ```
 
 This is useful if you want different projects to expose different skills.
@@ -200,14 +206,14 @@ npm install -g @openai/codex && codex login
 # 2. Установить Codex-плагин для Claude Code
 /install-plugin codex
 
-# 3. Клонировать репозиторий и поставить скиллы
-git clone https://github.com/biyachuev/claude-debate-skills.git
-cd claude-debate-skills
-./install.sh
+# 3. Установить debate skills как плагин
+claude plugin install --source https://github.com/biyachuev/claude-debate-skills.git
 
 # 4. Открыть любой проект в Claude Code и запустить
 /strategy-debate Topic: Стоит ли выходить на SMB или enterprise первым? Constraints: команда из 6, нужна быстрая обратная связь.
 ```
+
+Альтернатива: `git clone` + `./install.sh` для установки через симлинки.
 
 ### Что нужно
 

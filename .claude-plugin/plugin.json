@@ -1,0 +1,21 @@
+{
+  "name": "debate-skills",
+  "version": "0.1.0",
+  "description": "Structured two-voice AI debates for strategy, idea generation, and decision pressure-testing using Claude and Codex.",
+  "author": {
+    "name": "biyachuev",
+    "url": "https://github.com/biyachuev"
+  },
+  "repository": "https://github.com/biyachuev/claude-debate-skills",
+  "homepage": "https://github.com/biyachuev/claude-debate-skills",
+  "license": "MIT",
+  "keywords": [
+    "debate",
+    "strategy",
+    "codex",
+    "two-voice",
+    "decision-making",
+    "cross-critique",
+    "idea-generation"
+  ]
+}
