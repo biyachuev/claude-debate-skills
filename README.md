@@ -8,8 +8,6 @@ Reusable Claude Code skills for strategy discussions, idea generation, critique,
 
 Two AI models, Claude (Anthropic) and Codex (OpenAI), debate each other through structured protocols instead of giving you a single unchallenged answer. Different training data, different blind spots, structured disagreement that surfaces what one model alone would miss.
 
-> **[Статья на Хабре](#)** — подробный разбор на русском языке.
-
 ## Quick Start
 
 ```bash
